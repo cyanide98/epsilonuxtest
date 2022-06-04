@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UX Dev Test - Rishi Ramesh</title>
+  <meta name="description" content="description for the content">
+  <link rel="stylesheet/less" type="text/css" href="styles.less" />
+  <script src="https://cdn.jsdelivr.net/npm/less@4"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"> </script>
+</head>
+
+<body>
+  <article class="cardComponent">
+    <div class="cardImage"></div>
+    <div class="cardDetailsWrap">
+      <h1 class="cardTitle">
+        Beach Day
+      </h1>
+      <h2 class="cardSubTitle">
+        Rufus The Dog
+      </h2>
+      <p class="cardBottomText">
+        Modified 02/28/2019 by bfrost
+      </p>
+    </div>
+  </article>
+  <form action="#" method="get" id="testForm" class="formContainer">
+    <label for="name">Name</label>
+    <input type="text" name="name" placeholder="Enter Name">
+    <label for="email">Email</label>
+    <input type="email" name="email" placeholder="Enter Email">
+    <label for="phone">Phone Number</label>
+    <input type="email" name="phone" placeholder="Enter Phone Number">
+    <label for="phone">Password</label>
+    <input type="password" name="password" placeholder="Enter Password">
+    <label for="phone">Password</label>
+    <input type="password" name="password" placeholder="Confirm Password">
+    <button class="formSubmitCTA" type="submit" form="testForm" value="Submit">
+      Save
+    </button>
+  </form>
+
+  <table class="tableFunctions">
+    <tr>
+      <th>Product Name
+        <div class="arrowIcons">
+          <svg class="arrowUpSort" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="7 9 10 5"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 14l5-5 5 5H7z"/></svg>
+            <svg class="arrowDownSort" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="7 10 10 5"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 10l5 5 5-5H7z"/></svg>
+        </div>
+      </th>
+      <th>Price
+        <div class="arrowIcons">
+          <svg class="arrowUpSort" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="7 9 10 5"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 14l5-5 5 5H7z"/></svg>
+            <svg class="arrowDownSort" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="7 10 10 5"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 10l5 5 5-5H7z"/></svg>
+        </div>
+      </th>
+      <th>Category
+        <div class="arrowIcons">
+          <svg class="arrowUpSort" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="7 9 10 5"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 14l5-5 5 5H7z"/></svg>
+            <svg class="arrowDownSort" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="7 10 10 5"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 10l5 5 5-5H7z"/></svg>
+        </div>
+      </th>
+    </tr>
+  </table>
+  <script>
+    $(document).ready(function () {
+
+      // Code to get JSON data from cookies.json
+      $.getJSON("https://raw.githubusercontent.com/epsilon-ux/code-challenge-resources/main/cookies.json",
+        function (data) {
+          var cookies = '';
+          var loopValue = 0;
+          var ascValue = false;
+          // Iterating via objects
+          $.each(data.cookies, function (key, value) {
+            // Creation of rows using the JSON object
+            cookies += '<tr>';
+            cookies += '<td>' +
+              value.name + '</td>';
+            cookies += '<td>' +
+              value.price + '</td>';
+            cookies += '<td>' +
+              value.category + '</td>';
+            cookies += '</tr>';
+            loopValue++;
+          });
+
+          $('.tableFunctions').append(cookies); //Adding rows to the table
+
+          // Comparison Algorithm
+          const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+
+          const comparer = (idx, asc) => (a, b) => ((v1, v2) =>
+            v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+          )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+
+          // Obtaining the data from table for sorting
+          document.querySelectorAll('.tableFunctions th .arrowDownSort, .tableFunctions th .arrowUpSort').forEach(
+            th => th.addEventListener('click', (() => {
+              if (!$(th).find(".arrowIcons").hasClass(
+                  "active")) { // Checking if existing sort buttons are active
+                $(".arrowIcons").removeClass("active");
+                $(".arrowIcons").addClass("inActive");
+                $(th).find(".arrowIcons").addClass("active");
+                $(".arrowIcons.inActive").find('.arrowDownSort').css('visibility', 'visible');
+                $(".arrowIcons.inActive").find('.arrowUpSort').css('visibility', 'visible');
+              }
+              // Adjusting the sort buttons for user display and setting the ascending value
+              if ($(th).is(".arrowDownSort")) {
+                $(th).css('visibility', 'hidden');
+                $(th).find(".arrowUpSort").css('visibility', 'visible');
+                ascValue = true;
+              } else if ($(th).is(".arrowUpSort")) {
+                $(th).css('visibility', 'hidden');
+                $(th).find(".arrowDownSort").css('visibility', 'visible');
+                ascValue = false;
+              }
+              const table = th.closest('th').closest('.tableFunctions');
+              // Sorting it in Array using sort & comparer
+              Array.from(table.querySelectorAll('.tableFunctions tr:nth-child(n+2)'))
+                .sort(comparer(Array.from(th.closest('th').parentNode.children).indexOf(th.closest('th')),
+                  ascValue))
+                .forEach(tr => table.appendChild(tr)); // Adding the sorted values on to the table
+            })));
+        });
+    });
+  </script>
+</body>
+
+</html>
