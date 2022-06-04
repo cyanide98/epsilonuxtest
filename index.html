@@ -5,13 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UX Dev Test - Rishi Ramesh</title>
-  <meta name="description" content="description for the content">
+  <meta name="description" content="UX Dev Test for Epsilon">
   <link rel="stylesheet/less" type="text/css" href="styles.less" />
   <script src="https://cdn.jsdelivr.net/npm/less@4"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.js"> </script>
 </head>
 
 <body>
+  <!-- Part 1 Card Component Starts -->
   <article class="cardComponent">
     <div class="cardImage"></div>
     <div class="cardDetailsWrap">
@@ -26,44 +27,64 @@
       </p>
     </div>
   </article>
+  <!-- Part 1 Card Component Ends -->
+
+  <!-- Part 2 Form Elements Starts-->
   <form action="#" method="get" id="testForm" class="formContainer">
     <label for="name">Name</label>
     <input type="text" name="name" placeholder="Enter Name">
     <label for="email">Email</label>
     <input type="email" name="email" placeholder="Enter Email">
     <label for="phone">Phone Number</label>
-    <input type="email" name="phone" placeholder="Enter Phone Number">
-    <label for="phone">Password</label>
+    <input type="tel" name="phone" placeholder="Enter Phone Number">
+    <label for="password">Password</label>
     <input type="password" name="password" placeholder="Enter Password">
-    <label for="phone">Password</label>
-    <input type="password" name="password" placeholder="Confirm Password">
+    <label for="confirmpass">Password</label>
+    <input type="password" name="confirmpass" placeholder="Confirm Password">
     <button class="formSubmitCTA" type="submit" form="testForm" value="Submit">
       Save
     </button>
   </form>
+  <!-- Part 2 Form Elements Ends -->
 
+  <!-- Part 3 Table Functions Starts -->
   <table class="tableFunctions">
     <tr>
       <th>Product Name
         <div class="arrowIcons">
-          <svg class="arrowUpSort" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="7 9 10 5"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 14l5-5 5 5H7z"/></svg>
-            <svg class="arrowDownSort" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="7 10 10 5"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 10l5 5 5-5H7z"/></svg>
+          <svg class="arrowUpSort" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="7 9 10 5">
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path d="M7 14l5-5 5 5H7z" /></svg>
+          <svg class="arrowDownSort" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="7 10 10 5">
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path d="M7 10l5 5 5-5H7z" /></svg>
         </div>
       </th>
       <th>Price
         <div class="arrowIcons">
-          <svg class="arrowUpSort" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="7 9 10 5"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 14l5-5 5 5H7z"/></svg>
-            <svg class="arrowDownSort" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="7 10 10 5"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 10l5 5 5-5H7z"/></svg>
+          <svg class="arrowUpSort" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="7 9 10 5">
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path d="M7 14l5-5 5 5H7z" /></svg>
+          <svg class="arrowDownSort" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="7 10 10 5">
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path d="M7 10l5 5 5-5H7z" /></svg>
         </div>
       </th>
       <th>Category
         <div class="arrowIcons">
-          <svg class="arrowUpSort" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="7 9 10 5"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 14l5-5 5 5H7z"/></svg>
-            <svg class="arrowDownSort" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="7 10 10 5"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 10l5 5 5-5H7z"/></svg>
+          <svg class="arrowUpSort" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="7 9 10 5">
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path d="M7 14l5-5 5 5H7z" /></svg>
+          <svg class="arrowDownSort" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="7 10 10 5">
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path d="M7 10l5 5 5-5H7z" /></svg>
         </div>
       </th>
     </tr>
   </table>
+  <!-- Part 3 Table Functions Ends -->
+
+  <!-- Scripts -->
   <script>
     $(document).ready(function () {
 
