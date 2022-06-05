@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UX Dev Test - Rishi Ramesh</title>
   <meta name="description" content="UX Dev Test for Epsilon">
+  <meta name="author" content="Rishi Ramesh">
   <link rel="stylesheet/less" type="text/css" href="styles.less" />
   <script src="https://cdn.jsdelivr.net/npm/less@4"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.js"> </script>
@@ -32,15 +33,15 @@
   <!-- Part 2 Form Elements Starts-->
   <form action="#" method="get" id="testForm" class="formContainer">
     <label for="name">Name</label>
-    <input type="text" name="name" placeholder="Enter Name" required>
+    <input id="name" type="text" name="name" placeholder="Enter Name" required>
     <label for="email">Email</label>
-    <input type="email" name="email" placeholder="Enter Email" required>
+    <input id="email" type="email" name="email" placeholder="Enter Email" required>
     <label for="phone">Phone Number</label>
-    <input type="tel" name="phone" placeholder="Enter Phone Number" required>
+    <input id="phone" type="tel" name="phone" placeholder="Enter Phone Number" required>
     <label for="password">Password</label>
-    <input type="password" name="password" placeholder="Enter Password" required>
-    <label for="confirmpass">Password</label>
-    <input type="password" name="confirmpass" placeholder="Confirm Password" required>
+    <input id="password" type="password" name="password" placeholder="Enter Password" required>
+    <label for="confirmpass">Confirm Password</label>
+    <input id="confirmpass" type="password" name="confirmpass" placeholder="Confirm Password" required>
     <button class="formSubmitCTA" type="submit" form="testForm" value="Submit">
       Save
     </button>
